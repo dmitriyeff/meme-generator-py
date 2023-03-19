@@ -3,11 +3,11 @@ from QuoteModel import QuoteModel
 from docx import Document
 
 class DocxImporter(IngestorInterface):
-    """ Parse docx file """
     allowed_extensions = ['docx']
     
     @classmethod
     def parse(cls, path):
+        """ Parse docx file """
         if not cls.can_ingest(path):
             raise Exception('Cannot ingest exception')
         
@@ -24,7 +24,5 @@ class DocxImporter(IngestorInterface):
                 
                 quotes.append(quoteModel)
         
-        return quotes
-
-print(DocxImporter.parse('src/_data/DogQuotes/DogQuotesDOCX.docx'))          
+        return quotes        
     

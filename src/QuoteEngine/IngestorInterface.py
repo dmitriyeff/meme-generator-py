@@ -4,7 +4,7 @@ from QuoteModel import QuoteModel
 
 class IngestorInterface(ABC):
 	@abstractmethod
-	def def_parse(cls, path: str) -> List[QuoteModel]:
+	def parse(cls, path: str) -> List[QuoteModel]:
 		pass
     
 	@classmethod

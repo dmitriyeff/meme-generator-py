@@ -3,11 +3,11 @@ from IngestorInterface import IngestorInterface
 from QuoteModel import QuoteModel
 
 class PdfImporter(IngestorInterface):
-    """ Parse pdf file """
     allowed_extensions = ['pdf']
     
     @classmethod
     def parse(cls, path):
+        """ Parse pdf file """
         if not cls.can_ingest(path):
             raise Exception('Cannot ingest exception')
         
@@ -22,8 +22,6 @@ class PdfImporter(IngestorInterface):
                 quotes.append(quoteModel)
 
         return quotes
-
-print(PdfImporter.parse('src/_data/DogQuotes/DogQuotesPDF.pdf'))
 
             
     

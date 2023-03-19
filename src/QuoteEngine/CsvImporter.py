@@ -3,11 +3,11 @@ from IngestorInterface import IngestorInterface
 from QuoteModel import QuoteModel
 
 class CsvImporter(IngestorInterface):
-    """ Parse csv file """
     allowed_extensions = ['csv']
     
     @classmethod
     def parse(cls, path):
+        """ Parse csv file """
         if not cls.can_ingest(path):
             raise Exception('Cannot ingest exception')
         
@@ -20,8 +20,6 @@ class CsvImporter(IngestorInterface):
                 quotes.append(quoteModel)
         
         return quotes
-
-print(CsvImporter.parse('src/_data/DogQuotes/DogQuotesCSV.csv'))
 
             
     

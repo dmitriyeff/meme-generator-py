@@ -20,7 +20,5 @@ class TxtImporter(IngestorInterface):
                 quote_model = QuoteModel(body, author)
                 quotes.append(quote_model)
         
-        return quotes
-
-print(TxtImporter.parse('src/_data/DogQuotes/DogQuotesTXT.txt'))          
+        return quotes     
     
