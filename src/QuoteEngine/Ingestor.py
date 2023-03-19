@@ -20,3 +20,5 @@ class Ingestor(IngestorInterface):
             return DocxImporter.parse(path)
         else:
             raise Exception('Unnkown file extension')
+        
+print(Ingestor.parse('src/_data/DogQuotes/DogQuotesPDF.pdf'))

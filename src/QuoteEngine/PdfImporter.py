@@ -1,4 +1,6 @@
-import pdftotext
+import subprocess
+import os
+import random
 from IngestorInterface import IngestorInterface
 from QuoteModel import QuoteModel
 
@@ -11,16 +13,22 @@ class PdfImporter(IngestorInterface):
         if not cls.can_ingest(path):
             raise Exception('Cannot ingest exception')
         
+        tmp = f'./{random.randint(0,1000000)}.txt'
+        subprocess.call(['pdftotext', path, tmp])
+        
+        file_ref = open(tmp, "r")
         quotes = []
-        with open(path, "rb") as f:
-            pdf = pdftotext.PDF(f)
-            strings = "\n\n".join(pdf).strip().split('\n')
-            
-            for string in strings:
-                [body, author] = string.split(' - ')
+        
+        for line in file_ref.readlines():
+            line = line.strip('\n\r').strip()
+            if len(line) > 0:
+                parsed = line.split(',')
+                [body, author] = parsed[0].split(' - ')
                 quoteModel = QuoteModel(body.strip('\"'), author)
                 quotes.append(str(quoteModel))
-
+        
+        file_ref.close()
+        os.remove(tmp)
         return quotes
 
             
