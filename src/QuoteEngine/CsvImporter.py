@@ -17,7 +17,7 @@ class CsvImporter(IngestorInterface):
             reader = csv.DictReader(csvfile)
             for row in reader:
                 quoteModel = QuoteModel(row['body'], row['author'])
-                quotes.append(quoteModel)
+                quotes.append(str(quoteModel))
         
         return quotes
 

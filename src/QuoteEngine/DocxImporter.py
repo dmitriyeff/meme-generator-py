@@ -22,7 +22,7 @@ class DocxImporter(IngestorInterface):
                 
                 quoteModel = QuoteModel(body.strip().strip('\"'), author.strip())
                 
-                quotes.append(quoteModel)
+                quotes.append(str(quoteModel))
         
         return quotes        
     

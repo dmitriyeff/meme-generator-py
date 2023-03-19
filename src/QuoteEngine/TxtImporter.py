@@ -18,7 +18,7 @@ class TxtImporter(IngestorInterface):
                 [body, author] = row.strip().split('-')
                 
                 quote_model = QuoteModel(body, author)
-                quotes.append(quote_model)
+                quotes.append(str(quote_model))
         
         return quotes     
     

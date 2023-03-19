@@ -19,7 +19,7 @@ class PdfImporter(IngestorInterface):
             for string in strings:
                 [body, author] = string.split(' - ')
                 quoteModel = QuoteModel(body.strip('\"'), author)
-                quotes.append(quoteModel)
+                quotes.append(str(quoteModel))
 
         return quotes
 
