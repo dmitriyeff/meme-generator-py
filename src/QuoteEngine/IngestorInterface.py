@@ -10,6 +10,10 @@ class IngestorInterface(ABC):
 	@classmethod
 	def can_ingest(cls, path) -> bool:
 		""" Return boolean wether file could be parsed or not """
-		extension = path.split('.')[-1]
+		extension = cls.get_file_extension(path)
 		
 		return extension in cls.allowed_extensions
+
+	@classmethod
+	def get_file_extension(cls, path) -> str:
+		return path.split('.')[-1]

@@ -2,7 +2,7 @@ import csv
 from IngestorInterface import IngestorInterface
 from QuoteModel import QuoteModel
 
-class CsvImporter(IngestorInterface):
+class CsvIngestor(IngestorInterface):
     allowed_extensions = ['csv']
     
     @classmethod

@@ -1,24 +1,28 @@
 from IngestorInterface import IngestorInterface
-from TxtImporter import TxtImporter
-from CsvImporter import CsvImporter
-from PdfImporter import PdfImporter
-from DocxImporter import DocxImporter
+import Ingestors
 
-class Ingestor(IngestorInterface):
+class Ingestor(IngestorInterface):    
+    ingestors = {
+        'txt': Ingestors.TxtIngestor,
+        'csv': Ingestors.CsvIngestor,
+        'pdf': Ingestors.PdfIngestor,
+        'docx': Ingestors.DocxIngestor,
+    }
+    
+    
     @classmethod
     def parse(cls, path):
-        """ Select appropriate helper function to parse provided file """
-        extension = path.split('.')[-1]
+        """ Select appropriate ingestor class to parse provided file """
+        file_extension = cls.get_file_extension(path)
         
-        if extension == "txt":
-            return TxtImporter.parse(path)
-        elif extension == "csv":
-            return CsvImporter.parse(path)
-        elif extension == "pdf":
-            return PdfImporter.parse(path)
-        elif extension == "docx":
-            return DocxImporter.parse(path)
-        else:
-            raise Exception('Unnkown file extension')
+        try:
+            ingestor = cls.ingestors.get(file_extension)
+            
+            if not ingestor:
+                raise Exception(f"File extension with name: `{file_extension}`, is not supported")
+            
+            return cls.ingestors.get(file_extension).parse(path)
+        except Exception as error:
+            print(error)
         
-print(Ingestor.parse('src/_data/DogQuotes/DogQuotesPDF.pdf'))
+print(Ingestor.parse('src/_data/DogQuotes/DogQuotesPDF.pd'))

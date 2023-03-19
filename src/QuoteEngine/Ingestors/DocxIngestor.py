@@ -2,7 +2,7 @@ from IngestorInterface import IngestorInterface
 from QuoteModel import QuoteModel
 from docx import Document
 
-class DocxImporter(IngestorInterface):
+class DocxIngestor(IngestorInterface):
     allowed_extensions = ['docx']
     
     @classmethod

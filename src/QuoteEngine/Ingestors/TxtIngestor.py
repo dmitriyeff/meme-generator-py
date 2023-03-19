@@ -2,14 +2,14 @@ from IngestorInterface import IngestorInterface
 from QuoteModel import QuoteModel
 
 
-class TxtImporter(IngestorInterface):
+class TxtIngestor(IngestorInterface):
     """ Parse txt file """
     allowed_extensions = ['txt']
     
     @classmethod
     def parse(cls, path):
         if not cls.can_ingest(path):
-            raise Exception('Cannot ingest exception')
+            raise Exception(f"Cannot ingest exception")
         
         quotes = []
         
