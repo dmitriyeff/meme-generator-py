@@ -16,4 +16,5 @@ class IngestorInterface(ABC):
 
 	@classmethod
 	def get_file_extension(cls, path) -> str:
+		""" Return file extension name """
 		return path.split('.')[-1]

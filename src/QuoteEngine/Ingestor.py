@@ -19,6 +19,7 @@ class Ingestor(IngestorInterface):
             ingestor = cls.ingestors.get(file_extension)
             
             if not ingestor:
+                """ Raise an exception if file extension parser is not provided """
                 raise Exception(f"File extension with name: `{file_extension}`, is not supported")
             
             return cls.ingestors.get(file_extension).parse(path)
