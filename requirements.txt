@@ -1,0 +1,9 @@
+bitarray==2.7.3
+docx==0.2.4
+lxml==4.9.2
+pdftotext==2.2.2
+Pillow==9.4.0
+pycryptodome==3.17
+python-dateutil==2.8.2
+python-docx==0.8.11
+six==1.16.0
