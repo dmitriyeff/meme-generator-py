@@ -14,5 +14,6 @@ If you want to generate your own images, you can use command line:
 Example: `python3 meme.py --path "_data/photos/dog/xander_1.jpg" --body "Finish" --author "Denis"`
 
 ## How to run flask server
-`python3 ./app.py `
+1. `cd src`
+2. `python3 ./app.py `
 
