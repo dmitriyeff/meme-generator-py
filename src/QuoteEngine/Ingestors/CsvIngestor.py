@@ -1,6 +1,6 @@
 import csv
-from IngestorInterface import IngestorInterface
-from QuoteModel import QuoteModel
+from QuoteEngine.IngestorInterface import IngestorInterface
+from QuoteEngine.QuoteModel import QuoteModel
 
 class CsvIngestor(IngestorInterface):
     allowed_extensions = ['csv']
@@ -17,7 +17,7 @@ class CsvIngestor(IngestorInterface):
             reader = csv.DictReader(csvfile)
             for row in reader:
                 quoteModel = QuoteModel(row['body'], row['author'])
-                quotes.append(str(quoteModel))
+                quotes.append(quoteModel)
         
         return quotes
 

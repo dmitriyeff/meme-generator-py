@@ -1,12 +1,12 @@
-from IngestorInterface import IngestorInterface
-import Ingestors
+from .IngestorInterface import IngestorInterface
+from QuoteEngine.Ingestors import TxtIngestor, CsvIngestor, PdfIngestor, DocxIngestor
 
 class Ingestor(IngestorInterface):    
     ingestors = {
-        'txt': Ingestors.TxtIngestor,
-        'csv': Ingestors.CsvIngestor,
-        'pdf': Ingestors.PdfIngestor,
-        'docx': Ingestors.DocxIngestor,
+        'txt': TxtIngestor,
+        'csv': CsvIngestor,
+        'pdf': PdfIngestor,
+        'docx': DocxIngestor,
     }
     
     
@@ -25,5 +25,3 @@ class Ingestor(IngestorInterface):
             return cls.ingestors.get(file_extension).parse(path)
         except Exception as error:
             print(error)
-        
-print(Ingestor.parse('src/_data/DogQuotes/DogQuotesPDF.pd'))

@@ -1,5 +1,5 @@
-from IngestorInterface import IngestorInterface
-from QuoteModel import QuoteModel
+from QuoteEngine.IngestorInterface import IngestorInterface
+from QuoteEngine.QuoteModel import QuoteModel
 from docx import Document
 
 class DocxIngestor(IngestorInterface):
@@ -22,7 +22,7 @@ class DocxIngestor(IngestorInterface):
                 
                 quoteModel = QuoteModel(body.strip().strip('\"'), author.strip())
                 
-                quotes.append(str(quoteModel))
+                quotes.append(quoteModel)
         
         return quotes        
     

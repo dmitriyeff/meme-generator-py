@@ -1,5 +1,5 @@
-from IngestorInterface import IngestorInterface
-from QuoteModel import QuoteModel
+from QuoteEngine.IngestorInterface import IngestorInterface
+from QuoteEngine.QuoteModel import QuoteModel
 
 
 class TxtIngestor(IngestorInterface):
@@ -18,7 +18,7 @@ class TxtIngestor(IngestorInterface):
                 [body, author] = row.strip().split('-')
                 
                 quote_model = QuoteModel(body, author)
-                quotes.append(str(quote_model))
+                quotes.append(quote_model)
         
         return quotes     
     

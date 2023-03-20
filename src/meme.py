@@ -2,8 +2,10 @@ import os
 import random
 
 # @TODO Import your Ingestor and MemeEngine classes
+from MemeEngine.MemeGenerator import MemeGenerator as MemeEngine
+from QuoteEngine.Ingestor import Ingestor
+
 from QuoteEngine.QuoteModel import QuoteModel
-#from QuoteEngine.IngestorInterface import IngestorInterface
 
 
 def generate_meme(path=None, body=None, author=None):
@@ -17,7 +19,10 @@ def generate_meme(path=None, body=None, author=None):
         for root, dirs, files in os.walk(images):
             imgs = [os.path.join(root, name) for name in files]
 
-        img = random.choice(imgs)
+        try:
+            img = random.choice(imgs)
+        except Exception as error:
+            print(error)
     else:
         img = path[0]
 
@@ -46,5 +51,12 @@ if __name__ == "__main__":
     # path - path to an image file
     # body - quote body to add to the image
     # author - quote author to add to the image
-    args = None
+    
+    import argparse
+    parser = argparse.ArgumentParser("An argument parser for meme generator")
+    parser.add_argument('--path')
+    parser.add_argument('--body')
+    parser.add_argument('--author')
+
+    args = parser.parse_args()
     print(generate_meme(args.path, args.body, args.author))

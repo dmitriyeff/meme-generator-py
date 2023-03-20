@@ -1,8 +1,8 @@
 import subprocess
 import os
 import random
-from IngestorInterface import IngestorInterface
-from QuoteModel import QuoteModel
+from QuoteEngine.IngestorInterface import IngestorInterface
+from QuoteEngine.QuoteModel import QuoteModel
 
 class PdfIngestor(IngestorInterface):
     allowed_extensions = ['pdf']
@@ -25,7 +25,7 @@ class PdfIngestor(IngestorInterface):
                 parsed = line.split(',')
                 [body, author] = parsed[0].split(' - ')
                 quoteModel = QuoteModel(body.strip('\"'), author)
-                quotes.append(str(quoteModel))
+                quotes.append(quoteModel)
         
         file_ref.close()
         os.remove(tmp)
