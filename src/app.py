@@ -27,7 +27,8 @@ def setup():
 
     # TODO: Use the pythons standard library os class to find all
     # images within the images images_path directory
-    imgs = os.scandir(images_path) 
+    for root, dirs, files in os.walk(images_path):
+        imgs = [os.path.join(root, name) for name in files]
 
     return quotes, imgs
 
@@ -43,9 +44,10 @@ def meme_rand():
     # Use the random python standard library class to:
     # 1. select a random image from imgs array
     # 2. select a random quote from the quotes array
-
-    img = random.choice(imgs)
+    
+    img = random.choice(list(imgs))
     quote = random.choice(quotes)
+
     path = meme.make_meme(img, quote.body, quote.author)
     return render_template('meme.html', path=path)
 
@@ -68,22 +70,26 @@ def meme_post():
     # 3. Remove the temporary saved image.
 
     args = request.args
-    image_url = args.get('image_url')
-    body = args.get('body')
-    author = args.get('author')
+    image_url = request.form.get('image_url')
+    body = request.form.get('body')
+    author = request.form.get('author')
     
     response = requests.get(image_url)
     
+    print('response => ', response)
     
-    tmp_path = random.getrandbits(128)
-    tmp = f"./{tmp_path}.png"
+    if response.status_code != 200:
+        raise Exception(f"Something went wrong, status code: {response.status_code}")
+    
+    tmp_path = random.getrandbits(64)
+    tmp = f"./{tmp_path}.jpg"
 
     with open(tmp, 'wb') as img:
         img.write(response.content)
     
     path = meme.make_meme(tmp, body, author)
     
-    os.remove(tmp_path)
+    os.remove(tmp)
 
     return render_template('meme.html', path=path)
 
