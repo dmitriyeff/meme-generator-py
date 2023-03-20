@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw, ImageFont, ImagePath
+from PIL import Image, ImageDraw, ImageFont
 import random
 
 class MemeGenerator:
