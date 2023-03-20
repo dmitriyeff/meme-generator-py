@@ -16,4 +16,5 @@ Example: `python3 meme.py --path "_data/photos/dog/xander_1.jpg" --body "Finish"
 ## How to run flask server
 1. `cd src`
 2. `python3 ./app.py `
+3. open the host on which app is running: http://127.0.0.1:5000
 
