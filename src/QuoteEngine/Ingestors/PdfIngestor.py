@@ -1,3 +1,8 @@
+"""PDF file parser.
+    
+Returns:
+    {list}: list of quotes
+"""
 import subprocess
 import os
 import random
@@ -6,11 +11,13 @@ from QuoteEngine.QuoteModel import QuoteModel
 
 
 class PdfIngestor(IngestorInterface):
+    """Initialize allowed file extensions."""
+    
     allowed_extensions = ['pdf']
 
     @classmethod
     def parse(cls, path):
-        """ Parse pdf file """
+        """Parse pdf file."""
         if not cls.can_ingest(path):
             raise Exception('Cannot ingest exception')
 

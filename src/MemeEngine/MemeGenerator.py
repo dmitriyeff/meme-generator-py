@@ -1,9 +1,22 @@
+"""
+Raises: unexpected error.
+
+Returns:
+{str}: path to saved image.
+"""
 from PIL import Image, ImageDraw, ImageFont
 import random
 
 
 class MemeGenerator:
+    """Image - quote generator class."""
+    
     def __init__(self, output_dir):
+        """Init output directory.
+
+        Args:
+            output_dir (str): path to output directory.
+        """
         self.out_path = output_dir
 
     def make_meme(
@@ -13,7 +26,7 @@ class MemeGenerator:
         author: str,
         width=500
     ) -> str:
-        """Create a Postcard With a Text Greeting
+        """Create a Postcard With a Text Greeting.
 
         Arguments:
             img_path {str} -- the file location for the input image.
@@ -30,7 +43,7 @@ class MemeGenerator:
                 pixels = width * height
 
                 if (pixels > 500):
-                    """ Resize an image """
+                    """Resize an image."""
                     size = width, height
                     img = img.resize(size)
 

@@ -1,14 +1,21 @@
+"""CSV file parser.
+    
+Returns:
+    {list}: list of quotes.
+"""
 import csv
 from QuoteEngine.IngestorInterface import IngestorInterface
 from QuoteEngine.QuoteModel import QuoteModel
 
 
 class CsvIngestor(IngestorInterface):
+    """initialize allowed extensions."""
+    
     allowed_extensions = ['csv']
 
     @classmethod
     def parse(cls, path):
-        """ Parse csv file """
+        """Parse csv file."""
         if not cls.can_ingest(path):
             raise Exception('Cannot ingest exception')
 

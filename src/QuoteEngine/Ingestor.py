@@ -1,3 +1,11 @@
+"""Root class for ingestors.
+
+Raises:
+    Exception: print unexpected error.
+
+Returns:
+    {list}: list of quotes.
+"""
 from .IngestorInterface import IngestorInterface
 from QuoteEngine.Ingestors import (
     TxtIngestor,
@@ -8,6 +16,8 @@ from QuoteEngine.Ingestors import (
 
 
 class Ingestor(IngestorInterface):
+    """Initialize all ingestors."""
+    
     ingestors = {
         'txt': TxtIngestor,
         'csv': CsvIngestor,
@@ -17,7 +27,7 @@ class Ingestor(IngestorInterface):
 
     @classmethod
     def parse(cls, path):
-        """ Select appropriate ingestor class to parse provided file """
+        """Select appropriate ingestor class to parse provided file."""
         file_extension = cls.get_file_extension(path)
 
         try:
@@ -25,7 +35,7 @@ class Ingestor(IngestorInterface):
 
             if not ingestor:
                 """Raise an exception
-                if file extension parser is not provided
+                if file extension parser is not provided.
                 """
                 raise Exception(
                     f"File extension `{file_extension}`, is not supported"

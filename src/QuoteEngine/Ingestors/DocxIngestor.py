@@ -1,14 +1,21 @@
+"""DOCX file parser.
+    
+Returns:
+    {list}: list of quotes
+"""
 from QuoteEngine.IngestorInterface import IngestorInterface
 from QuoteEngine.QuoteModel import QuoteModel
 from docx import Document
 
 
 class DocxIngestor(IngestorInterface):
+    """Initialize allowed extensions."""
+    
     allowed_extensions = ['docx']
 
     @classmethod
     def parse(cls, path):
-        """ Parse docx file """
+        """Parse docx file."""
         if not cls.can_ingest(path):
             raise Exception('Cannot ingest exception')
 
