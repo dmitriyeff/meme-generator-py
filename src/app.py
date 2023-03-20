@@ -21,7 +21,7 @@ def setup():
 
     quotes = []
     for file in quote_files:
-        quotes.extend(Ingestor.pars(file))
+        quotes.extend(Ingestor.parse(file))
 
     images_path = "./_data/photos/dog/"
 
