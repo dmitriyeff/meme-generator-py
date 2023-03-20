@@ -39,12 +39,6 @@ quotes, imgs = setup()
 @app.route('/')
 def meme_rand():
     """ Generate a random meme """
-
-    # @TODO:
-    # Use the random python standard library class to:
-    # 1. select a random image from imgs array
-    # 2. select a random quote from the quotes array
-    
     img = random.choice(list(imgs))
     quote = random.choice(quotes)
 
@@ -73,22 +67,20 @@ def meme_post():
     image_url = request.form.get('image_url')
     body = request.form.get('body')
     author = request.form.get('author')
-    
+
     response = requests.get(image_url)
-    
-    print('response => ', response)
-    
+
     if response.status_code != 200:
-        raise Exception(f"Something went wrong, status code: {response.status_code}")
-    
+        raise Exception(f"Something went wrong, code: {response.status_code}")
+
     tmp_path = random.getrandbits(64)
     tmp = f"./{tmp_path}.jpg"
 
     with open(tmp, 'wb') as img:
         img.write(response.content)
-    
+
     path = meme.make_meme(tmp, body, author)
-    
+
     os.remove(tmp)
 
     return render_template('meme.html', path=path)
