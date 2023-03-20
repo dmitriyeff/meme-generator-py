@@ -67,7 +67,7 @@ def meme_post():
     #    file and the body and author form paramaters.
     # 3. Remove the temporary saved image.
 
-    args = requests.args
+    args = request.args
     image_url = args.get('image_url')
     body = args.get('body')
     author = args.get('author')
