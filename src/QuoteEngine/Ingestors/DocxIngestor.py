@@ -21,7 +21,9 @@ class DocxIngestor(IngestorInterface):
 
         quotes = []
 
-        document = Document(path)
+        f = open(path, 'rb')
+        document = Document()
+        f.close()
 
         for para in document.paragraphs:
             if para.text != "":
@@ -29,8 +31,8 @@ class DocxIngestor(IngestorInterface):
                 [body, author] = quote[0].split('-')
 
                 quoteModel = QuoteModel(
-                    body.strip().strip('\"'),
-                    author.strip()
+                    body.strip().strip('\"').encode('utf-8'),
+                    author.strip().encode('utf-8')
                 )
 
                 quotes.append(quoteModel)

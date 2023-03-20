@@ -39,27 +39,31 @@ class MemeGenerator:
         try:
             with Image.open(img_path) as img:
                 im = img.getdata()
-                width, height = im.size
-                pixels = width * height
 
-                if (pixels > 500):
-                    """Resize an image."""
-                    size = width, height
-                    img = img.resize(size)
+                width = 500
+                img_w, img_h = im.size
+                wpercent = (width/float(img_w))
+                hsize = int((float(img_h)*float(wpercent)))
+                img = img.resize((width, hsize), Image.ANTIALIAS)
+
+                x_min = (img.size[0] * 8) // 100
+                x_max = (img.size[0] * 50) // 100
 
                 draw = ImageDraw.Draw(img)
                 font = ImageFont.load_default()
+
                 draw.text(
-                    (random.randint(0, width),
-                     random.randint(0, height)),
+                    (random.randint(0, x_min),
+                     random.randint(0, x_max)),
                     f"{body} - {author}",
                     font=font,
                     fill='white'
                 )
 
-                image_name = random.getrandbits(64)
+                image_name = random.getrandbits(128)
                 img.save(f"{self.out_path}/{image_name}.jpg")
 
                 return f"{self.out_path}/{image_name}.jpg"
         except Exception as error:
+            print(error)
             raise Exception(error)

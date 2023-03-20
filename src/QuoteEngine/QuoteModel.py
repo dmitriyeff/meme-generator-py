@@ -8,7 +8,7 @@ Returns:
 
 class QuoteModel:
     """Encapsulate body and author."""
-    
+
     def __init__(self, body, author):
         """Initialize parameters.
 
