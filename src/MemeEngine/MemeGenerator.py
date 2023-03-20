@@ -10,7 +10,7 @@ import random
 
 class MemeGenerator:
     """Image - quote generator class."""
-    
+
     def __init__(self, output_dir):
         """Init output directory.
 

@@ -1,5 +1,5 @@
 """CSV file parser.
-    
+
 Returns:
     {list}: list of quotes.
 """
@@ -10,7 +10,7 @@ from QuoteEngine.QuoteModel import QuoteModel
 
 class CsvIngestor(IngestorInterface):
     """initialize allowed extensions."""
-    
+
     allowed_extensions = ['csv']
 
     @classmethod

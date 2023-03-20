@@ -79,8 +79,8 @@ def meme_post():
         os.remove(tmp)
 
         return render_template('meme.html', path=path)
-    except:
-        print(f"Unable to fetch img from url: {image_url}")
+    except Exception as error:
+        print(error)
         return render_template('meme-error-page.html')
 
 

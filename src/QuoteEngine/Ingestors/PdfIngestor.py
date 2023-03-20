@@ -1,5 +1,5 @@
 """PDF file parser.
-    
+
 Returns:
     {list}: list of quotes
 """
@@ -12,7 +12,7 @@ from QuoteEngine.QuoteModel import QuoteModel
 
 class PdfIngestor(IngestorInterface):
     """Initialize allowed file extensions."""
-    
+
     allowed_extensions = ['pdf']
 
     @classmethod

@@ -1,5 +1,5 @@
 """TXT file parser.
-    
+
 Returns:
     {list}: list of quotes
 """
@@ -9,12 +9,12 @@ from QuoteEngine.QuoteModel import QuoteModel
 
 class TxtIngestor(IngestorInterface):
     """Initialize allowed extensions."""
-    
+
     allowed_extensions = ['txt']
 
     @classmethod
     def parse(cls, path):
-        """Parse txt file."""
+        """Parse txt."""
         if not cls.can_ingest(path):
             raise Exception(f"Cannot ingest exception")
 

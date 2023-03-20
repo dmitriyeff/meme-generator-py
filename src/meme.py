@@ -18,7 +18,7 @@ def generate_meme(path=None, body=None, author=None):
         imgs = []
         for root, dirs, files in os.walk(images):
             imgs = [os.path.join(root, name) for name in files]
-        
+
         img = random.choice(imgs)
     else:
         img = path

@@ -4,12 +4,14 @@ QuoteModal for quote data encapsulation.
 Returns:
     {str}: quote that consists of body and author.
 """
+
+
 class QuoteModel:
     """Encapsulate body and author."""
-
+    
     def __init__(self, body, author):
         """Initialize parameters.
-        
+
         Args:
             body (str): text.
             author (str): author name.

@@ -17,7 +17,7 @@ from QuoteEngine.Ingestors import (
 
 class Ingestor(IngestorInterface):
     """Initialize all ingestors."""
-    
+
     ingestors = {
         'txt': TxtIngestor,
         'csv': CsvIngestor,

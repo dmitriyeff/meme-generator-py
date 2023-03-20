@@ -6,7 +6,7 @@ from .QuoteModel import QuoteModel
 
 class IngestorInterface(ABC):
     """Blueprint for IngestorInterface child classes."""
-    
+
     @abstractmethod
     def parse(cls, path: str) -> List[QuoteModel]:
         """Parse method should be utilized in all child classes."""

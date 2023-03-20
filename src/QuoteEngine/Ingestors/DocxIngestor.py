@@ -1,5 +1,5 @@
 """DOCX file parser.
-    
+
 Returns:
     {list}: list of quotes
 """
@@ -10,7 +10,7 @@ from docx import Document
 
 class DocxIngestor(IngestorInterface):
     """Initialize allowed extensions."""
-    
+
     allowed_extensions = ['docx']
 
     @classmethod
