@@ -13,6 +13,7 @@ Multimedia application to dynamically generate memes, including an image with an
 	Get the full file path to the folder named bin32 (if you have a 32-bit machine) or bin64 (if you have a 64-bit machine).
 	Add this path to the Path environment variable. This will allow you to use the xpdf command from the command line. If you've never done this before, check out this Stack Overflow post on how to add a folder to the Path environment variable.
 	For Linux, you can use Homebrew (as shown above for Mac) or apt-get to install (simply enter sudo apt-get install -y xpdf in your command line interface).
+3.  Install dependencies: `pip3 install -r requirements.txt`
 
 
 ## How to generate an image with the quote
