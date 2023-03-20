@@ -62,27 +62,26 @@ def meme_post():
     #    file and the body and author form paramaters.
     # 3. Remove the temporary saved image.
 
-    args = request.args
     image_url = request.form.get('image_url')
     body = request.form.get('body')
     author = request.form.get('author')
 
-    response = requests.get(image_url)
+    try:
+        response = requests.get(image_url)
+        tmp_path = random.getrandbits(64)
+        tmp = f"./{tmp_path}.jpg"
 
-    if response.status_code != 200:
-        raise Exception(f"Something went wrong, code: {response.status_code}")
+        with open(tmp, 'wb') as img:
+            img.write(response.content)
 
-    tmp_path = random.getrandbits(64)
-    tmp = f"./{tmp_path}.jpg"
+        path = meme.make_meme(tmp, body, author)
 
-    with open(tmp, 'wb') as img:
-        img.write(response.content)
+        os.remove(tmp)
 
-    path = meme.make_meme(tmp, body, author)
-
-    os.remove(tmp)
-
-    return render_template('meme.html', path=path)
+        return render_template('meme.html', path=path)
+    except:
+        print(f"Unable to fetch img from url: {image_url}")
+        return render_template('meme-error-page.html')
 
 
 if __name__ == "__main__":
