@@ -45,7 +45,7 @@ def generate_meme(path=None, body=None, author=None):
     return path
 
 
-if __name__ == "__main__":    
+if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Meme generator")
     parser.add_argument('--path')
